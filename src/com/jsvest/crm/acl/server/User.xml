@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="User" type="com.jsvest.crm.acl.server.User"/>
+
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+  <resultMap id="UserResult" class="User">
+    <result property="id" column="ID"/>
+    <result property="name" column="NAME"/>
+    <result property="passwordHash" column="PASSWORD_HASH"/>
+    <result property="email" column="EMAIL"/>
+  </resultMap>
+
+  <select id="selectAllUsers" resultMap="UserResult">
+    select * from crm_user
+  </select>
+
+  <!-- A simpler select example without the result map.  Note the 
+       aliases to match the properties of the target result class. -->
+  <select id="selectUserById" parameterClass="int" resultClass="User">
+    select
+      id,
+      name,
+      password_hash as passwordHash,
+      email
+    from crm_user
+    where id = #id#
+  </select>
+
+  <insert id="insertUser" parameterClass="User">
+    insert into crm_user (
+      id,
+      name,
+      password_hash,
+      email)
+    values (
+      #id#, #name#, #passwordHash#, #email#
+    )
+  </insert>
+
+  <update id="updateUser" parameterClass="User">
+    update crm_user set
+      name = #name#,
+      password_hash = #passwordHash#,
+      email = #email#
+    where
+      id = #id#
+  </update>
+
+  <!-- Delete example, using an integer as the parameter class -->
+  <delete id="deleteUserById" parameterClass="int">
+    delete from crm_user where id = #id#
+  </delete>
+
+</sqlMap>
