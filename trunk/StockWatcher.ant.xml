@@ -8,8 +8,8 @@
   <!-- set classpath -->
   <path id="project.class.path">
     <pathelement path="${java.class.path}/"/>
-    <pathelement path="D:/gwt-windows-1.5.3/gwt-user.jar"/>
-  	<pathelement path="D:/gwt-windows-1.5.3/gwt-visualization.jar"/>
+    <pathelement path="lib/gwt-user.jar"/>
+  	<pathelement path="lib/gwt-visualization.jar"/>
 	<pathelement path="lib/junit.jar"/>
 	<pathelement path="lib/ibatis-2.3.4.726.jar"/>
 
