@@ -1,1 +1,0 @@
-@java -Dgwt.args="-out www-test" -Xmx256M -cp "%~dp0\src;%~dp0\test;%~dp0\bin;%~dp0\lib\junit.jar;%~dp0\lib\gwt-user.jar;%~dp0\lib\gwt-dev-windows.jar;;%~dp0\lib\gwt-visualization.jar" junit.textui.TestRunner com.jsvest.crm.acl.client.StockWatcherTest %*
