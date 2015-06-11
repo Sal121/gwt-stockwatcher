@@ -1,0 +1,1 @@
+sample app for gwt, use visualization api and ibatis
